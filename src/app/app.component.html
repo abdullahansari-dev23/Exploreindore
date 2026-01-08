@@ -1,0 +1,89 @@
+<!-- ========================= NAVBAR ========================= -->
+<nav
+  class="fixed top-5 left-1/2 -translate-x-1/2
+         w-[92%] md:w-[78%]
+         bg-white/70 backdrop-blur-xl
+         border border-white/50
+         shadow-2xl
+         rounded-3xl
+         z-50">
+
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between px-6 py-4">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-[#400045] flex items-center justify-center text-white font-bold">
+        I
+      </div>
+      <span class="text-xl font-bold text-[#400045] tracking-wide">
+        Indore Tourism
+      </span>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button
+      data-collapse-target="#nav-menu"
+      class="md:hidden w-10 h-10 flex items-center justify-center
+             rounded-xl hover:bg-black/5">
+      <svg class="w-6 h-6 text-[#400045]" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+              d="M5 7h14M5 12h14M5 17h14"/>
+      </svg>
+    </button>
+
+    <!-- Menu -->
+    <div class="hidden md:flex items-center gap-10" id="nav-menu">
+
+      <a href="#"
+         class="relative text-gray-700 font-semibold
+                hover:text-[#400045]
+                after:absolute after:left-0 after:-bottom-1
+                after:h-[2px] after:w-0 after:bg-[#400045]
+                hover:after:w-full after:transition-all">
+        HOME
+      </a>
+
+      <a (click)="goThingsToDo()"
+         class="relative text-gray-700 font-semibold
+                hover:text-[#400045]
+                after:absolute after:left-0 after:-bottom-1
+                after:h-[2px] after:w-0 after:bg-[#400045]
+                hover:after:w-full after:transition-all">
+        THINGS TO DO
+      </a>
+
+      <a (click)="gowheretogo()"
+         class="relative text-gray-700 font-semibold
+                hover:text-[#400045]
+                after:absolute after:left-0 after:-bottom-1
+                after:h-[2px] after:w-0 after:bg-[#400045]
+                hover:after:w-full after:transition-all">
+        WHERE TO GO
+      </a>
+
+      <a (click)="goHistory()"
+         class="relative text-gray-700 font-semibold
+                hover:text-[#400045]
+                after:absolute after:left-0 after:-bottom-1
+                after:h-[2px] after:w-0 after:bg-[#400045]
+                hover:after:w-full after:transition-all">
+        HISTORY
+      </a>
+
+      <!-- CTA -->
+      <a href="#contact-us"
+         class="ml-4 px-6 py-2 rounded-full
+                bg-[#400045] text-white font-semibold
+                hover:bg-[#2e0033] transition">
+        CONTACT
+      </a>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>

@@ -1,0 +1,13 @@
+/* You can add any component-specific styles here, or leave it empty if utilizing Tailwind entirely */
+/* Add this in global CSS or <style> tag */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+html {
+  scroll-behavior: smooth;
+}
