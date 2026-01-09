@@ -49,7 +49,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     constructor(private router: Router, private http: HttpClient) { }
 
     goThingsToDo() {
-        this.router.navigate(['/Thingtodo']);
+       this.router.navigate(['/Thingtodo']).then(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
     }
 
     onSubmitContact(event: Event): void {
@@ -109,6 +111,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
             this.submitStatus = '';
         }, 5000);
     }
+ 
+
+
+  gowheretogo() {
+  this.router.navigate(['/wheretogo']).then(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
 
     ngAfterViewInit(): void {
         // Wait for view to be fully initialized
@@ -185,12 +199,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     }
 
     slideLeft() {
-        this.itinerarySlider.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
-    }
+  this.itinerarySlider.nativeElement.scrollBy({
+    left: -300,
+    behavior: 'smooth'
+  });
+}
 
-    slideRight() {
-        this.itinerarySlider.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
-    }
+slideRight() {
+  this.itinerarySlider.nativeElement.scrollBy({
+    left: 300,
+    behavior: 'smooth'
+  });
+}
 
     scrollAnimations() {
         // Clear any existing ScrollTrigger instances
