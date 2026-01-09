@@ -13,26 +13,45 @@ gsap.registerPlugin(ScrollTrigger);
     styleUrl: './home.component.css'
 })
 export class HomeComponent implements AfterViewInit {
+
     @ViewChild('itinerarySlider', { static: false })
     itinerarySlider!: ElementRef<HTMLDivElement>;
 
     constructor(private router: Router) { }
 
     goThingsToDo() {
-    this.router.navigate(['/Thingtodo']);
-  }
+  this.router.navigate(['/Thingtodo']).then(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+  gowheretogo() {
+  this.router.navigate(['/wheretogo']).then(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
 
     ngAfterViewInit(): void {
         this.scrollAnimations();
     }
 
     slideLeft() {
-        this.itinerarySlider.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
-    }
+  this.itinerarySlider.nativeElement.scrollBy({
+    left: -300,
+    behavior: 'smooth'
+  });
+}
 
-    slideRight() {
-        this.itinerarySlider.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
-    }
+slideRight() {
+  this.itinerarySlider.nativeElement.scrollBy({
+    left: 300,
+    behavior: 'smooth'
+  });
+}
 
     scrollAnimations() {
         /* ================= HERO ================= */

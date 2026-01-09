@@ -15,16 +15,25 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   goThingsToDo() {
-    this.router.navigate(['/Thingtodo']);
-  }
+  this.router.navigate(['/Thingtodo']).then(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
   gowheretogo() {
-    this.router.navigate(['/wheretogo']);
-  }
+  this.router.navigate(['/wheretogo']).then(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
 
   goHistory() {
-    this.router.navigate(['/History']);
-  }
+  this.router.navigate(['/History']).then(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 
   @ViewChild('itinerarySlider', { static: false })

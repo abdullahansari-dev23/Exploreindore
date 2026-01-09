@@ -27,6 +27,10 @@ constructor(private Route: Router) {}
     this.Route.navigate(['/History']);
   }
 
+  goPrivacyPolicy(){
+    this.Route.navigate(['/PrivacyPolicy']);
+  }
+
   
   
 scrollToTop() {
@@ -37,5 +41,5 @@ scrollToTop() {
 }
 
   
-
 }
+
