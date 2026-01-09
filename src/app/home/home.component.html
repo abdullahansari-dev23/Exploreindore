@@ -3,12 +3,14 @@
 
   <!-- Background Video -->
   <video
-    class="absolute inset-0 w-full h-full object-cover"
+    #heroVideo
+    class="hero-video absolute inset-0 w-full h-full object-cover"
     src="assets/indore.mp4"
     autoplay
     muted
     loop
-    playsinline>
+    playsinline
+    preload="auto">
   </video>
 
   <!-- Overlay -->
@@ -19,13 +21,13 @@
               translate-y-6 md:translate-y-0">
 
     <h1
-      class="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-wide leading-[1.15]">
+      class="hero-title text-4xl md:text-6xl lg:text-7xl font-semibold tracking-wide leading-[1.15]">
       Experience the Heart of
       <span class="block text-[#e9c6ff]">Indore</span>
     </h1>
 
     <p
-      class="mt-6 text-lg md:text-xl font-light text-white/90 max-w-3xl leading-relaxed">
+      class="hero-text mt-6 text-lg md:text-xl font-light text-white/90 max-w-3xl leading-relaxed">
       From historic landmarks and vibrant street food to culture, festivals,
       and unforgettable moments — Indore welcomes you.
     </p>
@@ -315,22 +317,56 @@
                     Get Your <span class="text-amber-500">Free Quote</span> Today!
                 </h2>
 
-                <form class="mt-10 space-y-6">
-                    <input type="text" placeholder="Your Name"
-                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition" />
+                <form (ngSubmit)="onSubmitContact($event)" class="mt-10 space-y-6">
+                    <input
+                        type="text"
+                        name="name"
+                        [(ngModel)]="contactForm.name"
+                        placeholder="Your Name"
+                        [disabled]="isSubmitting"
+                        required
+                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition disabled:opacity-50" />
 
-                    <input type="email" placeholder="Your Email"
-                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition" />
+                    <input
+                        type="email"
+                        name="email"
+                        [(ngModel)]="contactForm.email"
+                        placeholder="Your Email"
+                        [disabled]="isSubmitting"
+                        required
+                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition disabled:opacity-50" />
 
-                    <input type="text" placeholder="Subject"
-                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition" />
+                    <input
+                        type="text"
+                        name="subject"
+                        [(ngModel)]="contactForm.subject"
+                        placeholder="Subject"
+                        [disabled]="isSubmitting"
+                        required
+                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition disabled:opacity-50" />
 
-                    <textarea rows="3" placeholder="Your Message"
-                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition"></textarea>
+                    <textarea
+                        rows="3"
+                        name="message"
+                        [(ngModel)]="contactForm.message"
+                        placeholder="Your Message"
+                        [disabled]="isSubmitting"
+                        required
+                        class="w-full border-b border-gray-300 bg-transparent py-3 outline-none focus:border-amber-500 transition disabled:opacity-50"></textarea>
 
-                    <button type="submit"
-                        class="mt-6 inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition">
-                        Send Message →
+                    <!-- Success/Error Message -->
+                    <div *ngIf="submitMessage"
+                         [class]="submitStatus === 'success' ? 'text-green-600 bg-green-50 border border-green-200' : 'text-red-600 bg-red-50 border border-red-200'"
+                         class="p-4 rounded-lg text-sm">
+                        {{ submitMessage }}
+                    </div>
+
+                    <button
+                        type="submit"
+                        [disabled]="isSubmitting"
+                        class="mt-6 inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span *ngIf="!isSubmitting">Send Message →</span>
+                        <span *ngIf="isSubmitting">Sending...</span>
                     </button>
                 </form>
             </div>
