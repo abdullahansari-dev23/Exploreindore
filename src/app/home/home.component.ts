@@ -1,8 +1,8 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -46,7 +46,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     // API endpoint - update this with your backend URL
     private apiUrl = 'http://localhost:3000/api/contact';
 
-    constructor(private router: Router, private http: HttpClient) { }
+    constructor(
+        private router: Router,
+        private http: HttpClient,
+        @Inject(PLATFORM_ID) private platformId: Object
+    ) { }
 
     goThingsToDo() {
        this.router.navigate(['/Thingtodo']).then(() => {
@@ -125,6 +129,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
 
     ngAfterViewInit(): void {
+        if (!isPlatformBrowser(this.platformId)) {
+            return;
+        }
         // Wait for view to be fully initialized
         setTimeout(() => {
             // Attempt to play video
